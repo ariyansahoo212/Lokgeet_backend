@@ -6,7 +6,6 @@ require("./db/conn");
 const userRouter = require("./routes/userRoutes");
 const GayakRouter = require("./routes/GayakRoutes");
 const appointRouter = require("./routes/appointRoutes");
-const path = require("path");
 const notificationRouter = require("./routes/notificationRouter");
 
 const app = express();
@@ -26,8 +25,13 @@ app.use("/api/Gayak", GayakRouter);
 app.use("/api/appointment", appointRouter);
 app.use("/api/notification", notificationRouter);
 
-// app.use(express.static(path.join(__dirname, "./client/build")));
+// Root route handler
+app.get('/', (req, res) => {
+  res.send('Welcome to the Bagheli LokGeet Gayak Booking website!');
+});
 
+// Uncomment these lines if you have a client-side build to serve
+// app.use(express.static(path.join(__dirname, "./client/build")));
 // app.get("*", (req, res) => {
 //   res.sendFile(path.join(__dirname, "./client/build/index.html"));
 // });
